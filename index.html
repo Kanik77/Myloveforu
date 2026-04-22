@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>Enter Password 💌</h2>
+    <input type="password" id="password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="error"></p>
+</div>
+
+<!-- MAIN -->
+<div id="mainContent">
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1 id="typing"></h1>
+
+    <div class="photos">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+
+    <button onclick="showLove()">Click for Surprise 💌</button>
+</div>
+
+</div>
+
+<script>
+function checkPassword(){
+    let pass = document.getElementById("password").value;
+
+    if(pass === "kanikunnati"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        document.getElementById("music").play();
+        typeText();
+    } else {
+        document.getElementById("error").innerText = "Wrong password 💔";
+    }
+}
+
+function showLove(){
+    alert("I love you forever ❤️");
+}
+
+// Typing animation
+let text = "For My Love ❤️";
+let i = 0;
+
+function typeText(){
+    let speed = 80;
+    function typing(){
+        if(i < text.length){
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+// Hearts
+setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),4000);
+},300);
+</script>
+
+</body>
+</html>
